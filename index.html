@@ -36,6 +36,7 @@ min-height:100vh;
 overflow-x:hidden;
 padding:20px;
 display:flex;
+align-items:center;
 justify-content:center;
 transition:
 background .4s cubic-bezier(.22,1,.36,1),
@@ -105,95 +106,64 @@ animation-delay:2s;
 }
 
 /* ======================
-MAIN CARD
+MAIN CONTAINER & CARD SYSTEM
 ====================== */
 
 .container{
 width:100%;
 max-width:430px;
 padding:30px 0;
+transition: max-width .4s ease;
 }
 
 .card{
 position:relative;
-
 padding:32px;
-
 border-radius:32px;
-
-background:
-linear-gradient(
-145deg,
-rgba(255,255,255,0.07),
-rgba(255,255,255,0.03)
-);
-
+background: linear-gradient(145deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
 border:1px solid rgba(255,255,255,0.08);
-
 backdrop-filter:blur(8px);
 -webkit-backdrop-filter:blur(8px);
-
 overflow:hidden;
+box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 
-box-shadow:
-0 10px 30px rgba(0,0,0,0.25);
-
-/* Ultra smooth hardware-accelerated opening animation */
 animation:cardReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 will-change: transform, opacity;
-
 transition:.4s cubic-bezier(.22,1,.36,1);
 }
 
-/* Border */
+.card-content-wrapper {
+display: flex;
+flex-direction: column;
+gap: 0;
+}
+
+.left-panel, .right-panel {
+width: 100%;
+}
 
 .card::after{
-
 content:'';
-
 position:absolute;
-
 inset:-1px;
-
 border-radius:32px;
-
 padding:1px;
-
-background:
-linear-gradient(
-130deg,
-rgba(37,99,235,.4),
-rgba(124,58,237,.4)
-);
-
--webkit-mask:
-linear-gradient(#fff 0 0) content-box,
-linear-gradient(#fff 0 0);
-
+background: linear-gradient(130deg, rgba(37,99,235,.4), rgba(124,58,237,.4));
+-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
 -webkit-mask-composite:xor;
-
 pointer-events:none;
 }
 
-/* Glow */
-
 .card::before{
 content:'';
-
 position:absolute;
-
 width:160px;
 height:160px;
-
 background:#f59e0b;
-
 border-radius:50%;
-
 filter:blur(70px);
-
 top:-70px;
 right:-60px;
-
 opacity:.12;
 }
 
@@ -202,33 +172,20 @@ THEME TOGGLE
 ====================== */
 
 .theme-toggle{
-
 position:absolute;
-
 top:22px;
 right:22px;
-
 width:52px;
 height:52px;
-
 border:none;
-
 border-radius:16px;
-
 cursor:pointer;
-
 font-size:18px;
-
 color:white;
-
 background:rgba(255,255,255,0.08);
-
 border:1px solid rgba(255,255,255,0.08);
-
 backdrop-filter:blur(8px);
-
 transition:.3s cubic-bezier(.22,1,.36,1);
-
 z-index:999;
 }
 
@@ -237,30 +194,21 @@ transform:scale(1.06);
 }
 
 /* ======================
-LOGO
+LOGO & BADGE
 ====================== */
 
 .logo{
 width:78px;
 height:78px;
-
 border-radius:24px;
-
-background:
-linear-gradient(145deg,#2563eb,#7c3aed);
-
+background: linear-gradient(145deg,#2563eb,#7c3aed);
 display:flex;
 align-items:center;
 justify-content:center;
-
 font-size:32px;
-
 margin-top:24px;
 margin-bottom:26px;
-
-box-shadow:
-0 10px 20px rgba(37,99,235,0.25);
-
+box-shadow: 0 10px 20px rgba(37,99,235,0.25);
 animation:floatLogo 8s ease-in-out infinite;
 }
 
@@ -268,29 +216,17 @@ animation:floatLogo 8s ease-in-out infinite;
 color:white;
 }
 
-/* ======================
-BADGE
-====================== */
-
 .badge{
 display:inline-flex;
 align-items:center;
 gap:8px;
-
 padding:8px 16px;
-
 border-radius:999px;
-
 background:rgba(255,255,255,0.05);
-
 border:1px solid rgba(255,255,255,0.08);
-
 font-size:11px;
-
 text-transform:uppercase;
-
 letter-spacing:3px;
-
 color:#d1d5db;
 }
 
@@ -302,62 +238,42 @@ background:#22c55e;
 }
 
 /* ======================
-TEXT
+TEXT & BUTTONS
 ====================== */
 
 h1{
 font-size:44px;
 line-height:1;
 font-weight:800;
-
 margin-top:10px;
 }
 
 .gradient{
 background:linear-gradient(to right,#ffffff,#60a5fa);
-
 -webkit-background-clip:text;
-
 -webkit-text-fill-color:transparent;
 }
 
 .desc{
 margin-top:18px;
-
 color:#9ca3af;
-
 font-size:15px;
-
 line-height:1.8;
-
 transition:.4s cubic-bezier(.22,1,.36,1);
 }
 
-/* ======================
-BUTTON
-====================== */
-
 .btn{
 margin-top:28px;
-
 height:56px;
-
 border-radius:18px;
-
 display:flex;
 align-items:center;
 justify-content:center;
 gap:12px;
-
 text-decoration:none;
-
 font-weight:600;
-
-background:
-linear-gradient(to right,#2563eb,#7c3aed);
-
+background: linear-gradient(to right,#2563eb,#7c3aed);
 color:white;
-
 transition:.25s cubic-bezier(.22,1,.36,1);
 }
 
@@ -365,67 +281,40 @@ transition:.25s cubic-bezier(.22,1,.36,1);
 transform:translateY(-3px);
 }
 
-/* ======================
-OTHER SOCIAL BOX
-====================== */
-
 .other-social-box{
-
 margin-top:26px;
-
 height:48px;
-
 display:flex;
 align-items:center;
 justify-content:center;
-
 border-radius:18px;
-
 background:rgba(255,255,255,0.05);
-
 border:1px solid rgba(255,255,255,0.08);
-
 font-size:13px;
-
 letter-spacing:1px;
-
 color:#d1d5db;
-
 backdrop-filter:blur(8px);
-
 transition:.4s cubic-bezier(.22,1,.36,1);
 }
-
-/* ======================
-SOCIALS
-====================== */
 
 .socials{
 display:flex;
 justify-content:center;
 gap:18px;
-
 margin-top:18px;
 }
 
 .social{
 width:68px;
 height:68px;
-
 border-radius:22px;
-
 display:flex;
 align-items:center;
 justify-content:center;
-
 background:rgba(255,255,255,0.05);
-
 border:1px solid rgba(255,255,255,0.08);
-
 font-size:24px;
-
 text-decoration:none;
-
 transition:
 transform .25s cubic-bezier(.22,1,.36,1),
 background .25s cubic-bezier(.22,1,.36,1),
@@ -433,43 +322,19 @@ box-shadow .25s cubic-bezier(.22,1,.36,1);
 }
 
 .social:hover{
-
-transform:
-translateY(-5px)
-scale(1.03);
-
-background:
-rgba(255,255,255,0.09);
-
-box-shadow:
-0 5px 15px rgba(0,0,0,.18);
+transform: translateY(-5px) scale(1.03);
+background: rgba(255,255,255,0.09);
+box-shadow: 0 5px 15px rgba(0,0,0,.18);
 }
 
-/* Social Colors */
-
-.telegram{
-color:#229ED9;
-}
-
+.telegram{ color:#229ED9; }
 .instagram i{
-
-background:
-linear-gradient(
-45deg,
-#f9ce34,
-#ee2a7b,
-#6228d7
-);
-
+background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-
 display:inline-block;
 }
-
-.whatsapp{
-color:#25D366;
-}
+.whatsapp{ color:#25D366; }
 
 /* ======================
 FAQ SECTION
@@ -483,15 +348,10 @@ gap:16px;
 }
 
 .faq-item{
-
 background:rgba(255,255,255,0.05);
-
 border:1px solid rgba(255,255,255,0.07);
-
 border-radius:22px;
-
 overflow:hidden;
-
 transition:
 background .35s cubic-bezier(.22,1,.36,1),
 transform .35s cubic-bezier(.22,1,.36,1);
@@ -503,23 +363,15 @@ transform:translateY(-2px);
 }
 
 .faq-question{
-
 width:100%;
-
 background:none;
-
 border:none;
-
 padding:18px;
-
 display:flex;
 align-items:center;
 justify-content:space-between;
-
 cursor:pointer;
-
 color:white;
-
 transition:.4s cubic-bezier(.22,1,.36,1);
 }
 
@@ -530,142 +382,79 @@ gap:14px;
 }
 
 .faq-icon{
-
 width:48px;
 height:48px;
-
 border-radius:16px;
-
 display:flex;
 align-items:center;
 justify-content:center;
-
-background:
-linear-gradient(145deg,#2563eb,#7c3aed);
-
+background: linear-gradient(145deg,#2563eb,#7c3aed);
 font-size:17px;
 }
 
 .faq-question span{
-
 font-size:16px;
-
 font-weight:600;
 }
 
-/* FAQ Animation */
-
 .faq-answer{
-
 display:block;
-
 max-height:0;
-
 overflow:hidden;
-
-transition:
-max-height .42s cubic-bezier(.22,1,.36,1);
+transition: max-height .42s cubic-bezier(.22,1,.36,1);
 }
 
-.faq-answer-inner{
-overflow:hidden;
-}
+.faq-answer-inner{ overflow:hidden; }
 
 .faq-answer p{
-
 padding:0 20px 20px 20px;
-
 font-size:14px;
-
 line-height:1.8;
-
 color:#9ca3af;
-
 transform:translateY(-6px);
-
 opacity:0;
-
 transition:
 opacity .28s cubic-bezier(.22,1,.36,1),
 transform .28s cubic-bezier(.22,1,.36,1),
 color .4s cubic-bezier(.22,1,.36,1);
 }
 
-/* Active */
-
-.faq-item.active .faq-answer{
-
-max-height:260px;
-}
-
+.faq-item.active .faq-answer{ max-height:260px; }
 .faq-item.active .faq-answer p{
-
 transform:translateY(0px);
-
 opacity:1;
 }
 
-/* Plus */
-
-.faq-plus{
-transition:
-transform .35s cubic-bezier(.22,1,.36,1);
-}
-
-.faq-item.active .faq-plus{
-transform:rotate(45deg);
-}
+.faq-plus{ transition: transform .35s cubic-bezier(.22,1,.36,1); }
+.faq-item.active .faq-plus{ transform:rotate(45deg); }
 
 /* ======================
-LOVE BOX
+MISC COMPONENTS
 ====================== */
 
 .love-box{
-
 margin-top:28px;
-
 height:52px;
-
 display:flex;
 align-items:center;
 justify-content:center;
-
 border-radius:22px;
-
 background:rgba(255,255,255,0.05);
-
 border:1px solid rgba(255,255,255,0.08);
-
 font-size:13px;
-
 font-weight:600;
-
 letter-spacing:2px;
-
 color:#d1d5db;
-
 backdrop-filter:blur(8px);
-
 transition:.4s cubic-bezier(.22,1,.36,1);
-
-opacity:1;
 }
-
-/* ======================
-FOOTER
-====================== */
 
 .footer{
 margin-top:18px;
-
 text-align:center;
-
 font-size:11px;
-
 letter-spacing:4px;
-
 color:#6b7280;
-
 transition:.4s cubic-bezier(.22,1,.36,1);
 }
 
@@ -674,150 +463,61 @@ PREMIUM LIGHT MODE
 ====================== */
 
 body.light{
-
-background:
-linear-gradient(
-180deg,
-#edf4ff,
-#f8fbff
-);
-
+background: linear-gradient(180deg, #edf4ff, #f8fbff);
 color:#111827;
 }
 
-/* Background */
-
 body.light .bg{
-
 background:
-radial-gradient(circle at top left,
-rgba(96,165,250,.25),
-transparent 25%),
-
-radial-gradient(circle at bottom right,
-rgba(168,85,247,.18),
-transparent 30%),
-
-linear-gradient(
-180deg,
-#edf4ff,
-#f8fbff
-);
+radial-gradient(circle at top left, rgba(96,165,250,.25), transparent 25%),
+radial-gradient(circle at bottom right, rgba(168,85,247,.18), transparent 30%),
+linear-gradient(180deg, #edf4ff, #f8fbff);
 }
 
-/* Grid */
-
-body.light .grid{
-opacity:.05;
-}
-
-/* Main Card */
+body.light .grid{ opacity:.05; }
 
 body.light .card{
-
-background:
-linear-gradient(
-145deg,
-rgba(255,255,255,0.72),
-rgba(255,255,255,0.45)
-);
-
+background: linear-gradient(145deg, rgba(255,255,255,0.72), rgba(255,255,255,0.45));
 border:1px solid rgba(255,255,255,0.6);
-
 backdrop-filter:blur(18px);
-
-box-shadow:
-0 10px 40px rgba(59,130,246,.08);
+box-shadow: 0 10px 40px rgba(59,130,246,.08);
 }
 
-/* Heading */
-
-body.light h1{
-color:#0f172a;
-}
-
-/* Gradient Text */
+body.light h1{ color:#0f172a; }
 
 body.light .gradient{
-
-background:
-linear-gradient(
-to right,
-#2563eb,
-#60a5fa
-);
-
+background: linear-gradient(to right, #2563eb, #60a5fa);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
-/* Description */
-
-body.light .desc{
-color:#475569;
-}
-
-/* Badge */
-
+body.light .desc{ color:#475569; }
 body.light .badge{
-
-background:
-rgba(255,255,255,.45);
-
-border:
-1px solid rgba(255,255,255,.6);
-
+background: rgba(255,255,255,.45);
+border: 1px solid rgba(255,255,255,.6);
 color:#64748b;
 }
 
-/* Toggle */
-
 body.light .theme-toggle{
-
-background:
-rgba(255,255,255,.55);
-
+background: rgba(255,255,255,.55);
 color:#111827;
-
-border:
-1px solid rgba(255,255,255,.7);
-
-box-shadow:
-0 4px 20px rgba(0,0,0,.05);
+border: 1px solid rgba(255,255,255,.7);
+box-shadow: 0 4px 20px rgba(0,0,0,.05);
 }
-
-/* Cards */
 
 body.light .faq-item,
 body.light .social,
 body.light .other-social-box,
 body.light .love-box{
-
-background:
-rgba(255,255,255,.45);
-
-border:
-1px solid rgba(255,255,255,.7);
-
+background: rgba(255,255,255,.45);
+border: 1px solid rgba(255,255,255,.7);
 backdrop-filter:blur(14px);
-
-box-shadow:
-0 4px 20px rgba(0,0,0,.03);
+box-shadow: 0 4px 20px rgba(0,0,0,.03);
 }
 
-/* FAQ Question */
+body.light .faq-question{ color:#0f172a; }
+body.light .faq-answer p{ color:#475569; }
 
-body.light .faq-question{
-color:#0f172a;
-}
-
-/* FAQ Answer */
-
-body.light .faq-answer p{
-color:#475569;
-}
-
-/* Fixed Visibility Overrides for Light Mode */
 body.light .other-social-box,
 body.light .love-box,
 body.light .footer{
@@ -825,15 +525,9 @@ color:#475569 !important;
 opacity:1 !important;
 }
 
-/* Hover */
-
 body.light .social:hover{
-
-background:
-rgba(255,255,255,.75);
-
-box-shadow:
-0 10px 25px rgba(59,130,246,.08);
+background: rgba(255,255,255,.75);
+box-shadow: 0 10px 25px rgba(59,130,246,.08);
 }
 
 /* ======================
@@ -841,81 +535,86 @@ ANIMATIONS
 ====================== */
 
 @keyframes blobFloat{
-
-0%{
-transform:translateY(0px);
-}
-
-50%{
-transform:translateY(-12px);
-}
-
-100%{
-transform:translateY(0px);
-}
-
+0% { transform:translateY(0px); }
+50% { transform:translateY(-12px); }
+100% { transform:translateY(0px); }
 }
 
 @keyframes floatLogo{
-
-0%{
-transform:translateY(0px);
+0% { transform:translateY(0px); }
+50% { transform:translateY(-10px); }
+100% { transform:translateY(0px); }
 }
 
-50%{
-transform:translateY(-10px);
-}
-
-100%{
-transform:translateY(0px);
-}
-
-}
-
-/* Enhanced smooth entrance */
 @keyframes cardReveal{
-
-0%{
-opacity:0;
-transform:
-translateY(30px)
-scale(.97);
+0%{ opacity:0; transform: translateY(30px) scale(.97); }
+100%{ opacity:1; transform: translateY(0px) scale(1); }
 }
 
-100%{
-opacity:1;
-transform:
-translateY(0px)
-scale(1);
+/* ==============================================================
+📟 TABLET, IPAD & LAPTOP RESPONSIVE VIEW (FIXED SCALE)
+============================================================== */
+
+@media (min-width: 768px) {
+.container {
+max-width: 95% !important; /* Forces container to capture wider viewport on all tabs */
+width: 1120px !important; 
+padding: 40px 24px;
 }
 
+.card {
+padding: 50px 55px; 
+border-radius: 44px;
+}
+
+.card::after {
+border-radius: 44px;
+}
+
+.card-content-wrapper {
+flex-direction: row;
+gap: 65px; 
+align-items: flex-start;
+}
+
+.left-panel {
+width: 44%;
+position: sticky;
+top: 30px;
+}
+
+.right-panel {
+width: 56%;
+margin-top: 15px;
+}
+
+h1 {
+font-size: 52px; 
+}
+
+.desc {
+font-size: 16px;
+margin-top: 22px;
+}
+
+.faq-section {
+margin-top: 0;
+gap: 18px; 
+}
+
+.love-box {
+margin-top: 36px;
+}
 }
 
 /* ======================
-MOBILE
+MOBILE OPTIMIZATIONS
 ====================== */
 
 @media(max-width:600px){
-
-.container{
-max-width:100%;
-}
-
-.card{
-padding:24px;
-border-radius:28px;
-}
-
-h1{
-font-size:38px;
-}
-
-.social{
-width:60px;
-height:60px;
-font-size:22px;
-}
-
+.card{ padding:24px; border-radius:28px; }
+h1{ font-size:38px; }
+.social{ width:60px; height:60px; font-size:22px; }
 }
 
 </style>
@@ -925,301 +624,152 @@ font-size:22px;
 <body>
 
 <div class="bg"></div>
-
 <div class="grid"></div>
-
 <div class="blob blob1"></div>
-
 <div class="blob blob2"></div>
 
 <div class="container">
-
 <div class="card">
 
-<button class="theme-toggle" id="themeToggle">
-
-🌙
-
-</button>
-
-<div class="badge">
-
-<div class="dot"></div>
-
-Dream • Study • Achieve
-
-</div>
-
-<div class="logo">
-
-<i class="fa-solid fa-graduation-cap"></i>
-
-</div>
-
-<h1>
-
-<span class="gradient">Preparation</span>
-
-<br>
-
-With Nehal
-
-</h1>
-
-<p class="desc">
-
-Focused guidance, smart strategies, and disciplined preparation
-for competitive exam aspirants aiming for success.
-
-</p>
-
-<a href=""
-class="btn">
-
-<i class="fa-brands fa-youtube" style="color:#FF0000;"></i>
-
-Start Learning
-
-</a>
-
-<div class="other-social-box">
-
-Other Social Handles
-
-</div>
-
-<div class="socials">
-
-<a href="https://t.me/prepwithnehal"
-class="social telegram">
-
-<i class="fa-brands fa-telegram"></i>
-
-</a>
-
-<a href=""
-class="social instagram">
-
-<i class="fa-brands fa-instagram"></i>
-
-</a>
-
-<a href="https://whatsapp.com/channel/0029Vb7pvtULY6d1a2FOIm0U"
-class="social whatsapp">
-
-<i class="fa-brands fa-whatsapp"></i>
-
-</a>
-
-</div>
-
-<div class="faq-section">
-
-<div class="faq-item">
-
-<button class="faq-question">
-
-<div class="faq-left">
-
-<div class="faq-icon">
-
-<i class="fa-solid fa-users"></i>
-
-</div>
-
-<span>Who We Teach</span>
-
-</div>
-
-<i class="fa-solid fa-plus faq-plus"></i>
-
-</button>
-
-<div class="faq-answer">
-
-<div class="faq-answer-inner">
-
-<p>
-
-We guide students from Class 6–12 and also mentor aspirants preparing
-for competitive government examinations including SSC, UPSC and state-level exams.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="faq-item">
-
-<button class="faq-question">
-
-<div class="faq-left">
-
-<div class="faq-icon">
-
-<i class="fa-solid fa-star"></i>
-
-</div>
-
-<span>What's Special Here</span>
-
-</div>
-
-<i class="fa-solid fa-plus faq-plus"></i>
-
-</button>
-
-<div class="faq-answer">
-
-<div class="faq-answer-inner">
-
-<p>
-
-Every subject is taught by experienced mentors with deep subject expertise.
-We maintain strict quality standards with concept clarity and smart strategy.
-
-</p>
+<button class="theme-toggle" id="themeToggle">🌙</button>
+
+<div class="card-content-wrapper">
+    
+    <div class="left-panel">
+        <div class="badge">
+            <div class="dot"></div>
+            Dream • Study • Achieve
+        </div>
+
+        <div class="logo">
+            <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+
+        <h1>
+            <span class="gradient">Preparation</span>
+            <br>
+            With Nehal
+        </h1>
+
+        <p class="desc">
+            Focused guidance, smart strategies, and disciplined preparation
+            for competitive exam aspirants aiming for success.
+        </p>
+
+        <a href="" class="btn">
+            <i class="fa-brands fa-youtube" style="color:#FF0000;"></i>
+            Start Learning
+        </a>
+
+        <div class="other-social-box">
+            Other Social Handles
+        </div>
+
+        <div class="socials">
+            <a href="https://t.me/prepwithnehal" class="social telegram">
+                <i class="fa-brands fa-telegram"></i>
+            </a>
+            <a href="" class="social instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://whatsapp.com/channel/0029Vb7pvtULY6d1a2FOIm0U" class="social whatsapp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="right-panel">
+        <div class="faq-section">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <div class="faq-left">
+                        <div class="faq-icon"><i class="fa-solid fa-users"></i></div>
+                        <span>Who We Teach</span>
+                    </div>
+                    <i class="fa-solid fa-plus faq-plus"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p>We guide students from Class 6–12 and also mentor aspirants preparing for competitive government examinations including SSC, UPSC and state-level exams.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <div class="faq-left">
+                        <div class="faq-icon"><i class="fa-solid fa-star"></i></div>
+                        <span>What's Special Here</span>
+                    </div>
+                    <i class="fa-solid fa-plus faq-plus"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p>Every subject is taught by experienced mentors with deep subject expertise. We maintain strict quality standards with concept clarity and smart strategy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <div class="faq-left">
+                        <div class="faq-icon"><i class="fa-solid fa-book-open"></i></div>
+                        <span>Study Approach</span>
+                    </div>
+                    <i class="fa-solid fa-plus faq-plus"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p>Our preparation system focuses on consistency, revision cycles, exam-oriented practice, and building strong fundamentals.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <div class="faq-left">
+                        <div class="faq-icon"><i class="fa-solid fa-bolt"></i></div>
+                        <span>Daily Motivation</span>
+                    </div>
+                    <i class="fa-solid fa-plus faq-plus"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p>We believe discipline beats motivation. Our platform helps students stay focused, productive, and consistent throughout their preparation journey.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="love-box">MADE WITH LOVE ❤️</div>
+        <div class="footer">PREPARATION WITH NEHAL</div>
+    </div>
 
 </div>
 
 </div>
-
-</div>
-
-<div class="faq-item">
-
-<button class="faq-question">
-
-<div class="faq-left">
-
-<div class="faq-icon">
-
-<i class="fa-solid fa-book-open"></i>
-
-</div>
-
-<span>Study Approach</span>
-
-</div>
-
-<i class="fa-solid fa-plus faq-plus"></i>
-
-</button>
-
-<div class="faq-answer">
-
-<div class="faq-answer-inner">
-
-<p>
-
-Our preparation system focuses on consistency, revision cycles,
-exam-oriented practice, and building strong fundamentals.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="faq-item">
-
-<button class="faq-question">
-
-<div class="faq-left">
-
-<div class="faq-icon">
-
-<i class="fa-solid fa-bolt"></i>
-
-</div>
-
-<span>Daily Motivation</span>
-
-</div>
-
-<i class="fa-solid fa-plus faq-plus"></i>
-
-</button>
-
-<div class="faq-answer">
-
-<div class="faq-answer-inner">
-
-<p>
-
-We believe discipline beats motivation. Our platform helps students
-stay focused, productive, and consistent throughout their preparation journey.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="love-box">
-
-MADE WITH LOVE ❤️
-
-</div>
-
-<div class="footer">
-
-PREPARATION WITH NEHAL
-
-</div>
-
-</div>
-
 </div>
 
 <script>
-
 const faqItems = document.querySelectorAll('.faq-item');
-
 faqItems.forEach(item => {
-
 const button = item.querySelector('.faq-question');
-
 button.addEventListener('click', () => {
-
-item.classList.toggle('active');
-
+    item.classList.toggle('active');
 });
-
 });
-
-/* Theme Toggle */
 
 const toggleBtn = document.getElementById('themeToggle');
-
 toggleBtn.addEventListener('click', () => {
-
 document.body.classList.toggle('light');
-
 if(document.body.classList.contains('light')){
-
-toggleBtn.innerHTML = '☀️';
-
+    toggleBtn.innerHTML = '☀️';
 }else{
-
-toggleBtn.innerHTML = '🌙';
-
+    toggleBtn.innerHTML = '🌙';
 }
-
 });
-
 </script>
 
 </body>
-
 </html>
 
